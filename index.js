@@ -34,12 +34,16 @@ class ReplaceCSSUrlPlugin {
         return valid;
       }).forEach((fileName) => {
         const {existsAt} = assets[fileName];
-        const oldCSS = fs.readFileSync(existsAt, 'utf8');
-        const newCSS = replaceCSSUrl(oldCSS, url => replace(url, fileName));
-        if (oldCSS !== newCSS) {
-          fs.writeFileSync(existsAt, newCSS, 'utf8');
-          console.log('** replaced css url:', existsAt);
-          total++;
+        try{
+          const oldCSS = fs.readFileSync(existsAt, 'utf8');
+          const newCSS = replaceCSSUrl(oldCSS, url => replace(url, fileName));
+          if (oldCSS !== newCSS) {
+            fs.writeFileSync(existsAt, newCSS, 'utf8');
+            console.log('** replaced css url:', existsAt);
+            total++;
+          }
+        }catch(e){
+          console.log('[replace-css-url]', e)
         }
       });
 
