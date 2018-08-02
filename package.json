@@ -1,0 +1,29 @@
+{
+  "name": "webpack-plugin-replace-css-url",
+  "version": "1.0.0",
+  "description": "webpack plugin to replace css url using custom function",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/futurist/webpack-plugin-replace-css-url.git"
+  },
+  "keywords": [
+    "webpack",
+    "plugin",
+    "replace-css-url",
+    "cdn"
+  ],
+  "author": "jamesyang999@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/futurist/webpack-plugin-replace-css-url/issues"
+  },
+  "homepage": "https://github.com/futurist/webpack-plugin-replace-css-url#readme",
+  "dependencies": {
+    "replace-css-url": "^1.2.5"
+  },
+  "devDependencies": {}
+}
