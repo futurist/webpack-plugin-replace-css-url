@@ -1,6 +1,6 @@
 {
   "name": "webpack-plugin-replace-css-url",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "webpack plugin to replace css url using custom function",
   "main": "index.js",
   "scripts": {
