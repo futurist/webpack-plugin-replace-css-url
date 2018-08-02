@@ -19,7 +19,7 @@ const config = {
     // 合并规则：合并所有plugins，同名plugin只出现一次
     new ReplaceCSSUrlPlugin({
       excludes: 'app.css',
-      replace: (file, url) => {
+      replace: (url, file) => {
         var prefix = '../'.repeat(file.split('/').length - 1) || './';
         var match = /(?:https?:)\/\/at.alicdn.com\/t\/\w+.([^.]+)/.exec(url);
         console.log(file, url);
