@@ -14,7 +14,7 @@ In your `webpack.config.js` file:
 
 
 ```javascript
-const ReplaceCSSUrl = 'webpack-plugin-replace-css-url'
+const ReplaceCSSUrl = require('webpack-plugin-replace-css-url')
 module.exports = {
   ...
   module: {
