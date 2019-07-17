@@ -1,6 +1,6 @@
 {
   "name": "webpack-plugin-replace-css-url",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Webpack plugin to transform download cdn urls in css and replaced with local file path",
   "main": "src/index.js",
   "keywords": [
