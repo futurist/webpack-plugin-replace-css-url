@@ -1,0 +1,40 @@
+{
+  "name": "webpack-plugin-replace-css-url",
+  "version": "2.0.0",
+  "description": "Webpack plugin to transform download cdn urls in css and replaced with local file path",
+  "main": "src/index.js",
+  "keywords": [
+    "webpack",
+    "loader",
+    "webpack-loader",
+    "css",
+    "url",
+    "cdn",
+    "relative-url",
+    "absolute-url"
+  ],
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": "https://github.com/futurist/replace-css-url-loader",
+  "author": "James Yang",
+  "license": "MIT",
+  "peerDependencies": {
+    "webpack": ">=3.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "css-loader": "^3.0.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "mini-css-extract-plugin": "^0.8.0",
+    "mocha": "^6.1.4",
+    "thai": "^1.1.2",
+    "webpack": "^3.12.0"
+  },
+  "dependencies": {
+    "mkdirp": "^0.5.1",
+    "node-fetch": "^2.6.0",
+    "replace-css-url": "^1.2.6",
+    "sha1": "^1.1.1"
+  }
+}
