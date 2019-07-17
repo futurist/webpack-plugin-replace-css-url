@@ -63,11 +63,14 @@ describe('Replace css url loader test', () => {
       ),
       (error, stats) =>
         happyPathCheck(done, error, stats, [
+            'fonts/7d222fe68dd211014a79859aaf8b7508a797ae9a.woff',
             'fonts/c8b87dff5e2ffff868ce807ef3d7fadf32a25686.eot',
-            'fonts/c8b87dff5e2ffff868ce807ef3d7fadf32a25686.eot',
-            'fonts/c8b87dff5e2ffff868ce807ef3d7fadf32a25686.eot',
-            'fonts/c8b87dff5e2ffff868ce807ef3d7fadf32a25686.eot',
-    ])
+            'fonts/8d18469d517f2a92fa24178a9b74677edbab9520.eot?#iefix',
+            'fonts/7d222fe68dd211014a79859aaf8b7508a797ae9a.woff',
+            'fonts/c41f0f30cd369db5725710cfd0d740a15c9b0a55.ttf',
+            'fonts/6270bf2697c870681a618534a44c542325521939.svg#iconfont',
+            'images/9e18d332eb36b841d535218e578fcece49cefc10.png',
+        ])
     );
   });
 

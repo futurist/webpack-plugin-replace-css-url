@@ -19,6 +19,7 @@ class Plugin {
       const { match, dirs, showLog = true } = this.options
       const DIR = {
         svg: ['fonts'],
+        otf: ['fonts'],
         ttf: ['fonts'],
         eot: ['fonts'],
         woff: ['fonts'],

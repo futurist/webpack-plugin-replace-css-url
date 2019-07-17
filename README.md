@@ -31,6 +31,7 @@ All cdn urls will be downloaded to local dirs, as below rule:
 ```
 {
     svg: ['fonts'],
+    otf: ['fonts'],
     ttf: ['fonts'],
     eot: ['fonts'],
     woff: ['fonts'],
