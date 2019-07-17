@@ -13,6 +13,7 @@
     "relative-url",
     "absolute-url"
   ],
+  "types": "index.d.ts",
   "scripts": {
     "test": "mocha"
   },
