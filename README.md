@@ -2,6 +2,8 @@
 
 Webpack plugin to transform download cdn urls in css and replaced with local file path
 
+Compatible with both webpack3 and webpack4, but only work with [ExtractTextPlugin](https://github.com/webpack-contrib/extract-text-webpack-plugin) or [MiniCssExtractPlugin](https://github.com/webpack-contrib/mini-css-extract-plugin), which emit separate `css` files.
+
 ## Install
 
 ```bash
