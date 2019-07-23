@@ -4,8 +4,6 @@ const { RawSource } = require('webpack-sources')
 const replaceCSSUrl = require('replace-css-url')
 const fetch = require('node-fetch')
 const sha1 = require('sha1')
-const mkdirp = require('mkdirp')
-const fs = require('fs')
 const url = require('url')
 
 class Plugin {
@@ -15,7 +13,6 @@ class Plugin {
   apply (compiler) {
     const action = (compilation, callback) => {
       const { assets } = compilation
-      const outputPath = compilation.options.output.path
       const { match, dirs, showLog = true } = this.options
       const DIR = {
         svg: ['fonts'],
@@ -36,7 +33,6 @@ class Plugin {
           const content = assets[name].source()
 
           const oldCSS = content
-          const rootPath = outputPath
 
           const downloadArr = []
           replaceCSSUrl(oldCSS, link => {
@@ -61,34 +57,25 @@ class Plugin {
           return Promise.all(
             downloadArr.map(obj => {
               const { link, ext } = obj
-              return fetch(link).then(res => {
-                return new Promise((resolve, reject) => {
-                  const saveDir = DIR[ext]
-                  const filepath = join(
-                    rootPath,
-                    join(...saveDir),
-                    sha1(link) + '.' + ext
-                  )
-                  mkdirp.sync(dirname(filepath))
-                  const dest = fs.createWriteStream(filepath)
-                  const stream = res.body.pipe(dest)
-                  stream.on('error', err => {
-                    reject(err)
-                  })
-                  stream.on('finish', () => {
-                    obj.filepath = filepath
-                    resolve(obj)
-                  })
-                })
+              return fetch(link)
+              .then(res => res.buffer())
+              .then(buffer => {
+                const saveDir = DIR[ext];
+                const filepath = join(
+                  join(...saveDir),
+                  sha1(link) + '.' + ext
+                );
+                obj.filepath = filepath;
+                assets[filepath] = new RawSource(buffer);
               })
             })
-          ).then(v => {
+          ).then(() => {
             const newCSS = replaceCSSUrl(oldCSS, link => {
               const obj = downloadArr.find(v => v.link === link)
               if (obj) {
                 const { urlObj, filepath } = obj
                 const newLink =
-                  relative(rootPath, filepath) +
+                  filepath +
                   (urlObj.search || '') +
                   (urlObj.hash || '')
                 if(showLog){
