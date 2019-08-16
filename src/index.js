@@ -36,6 +36,10 @@ class Plugin {
 
           const downloadArr = []
           replaceCSSUrl(oldCSS, link => {
+            const originLink = link
+            if(/^\/\//.test(link)) {
+              link = 'http:' + link
+            }
             const urlObj = url.parse(link)
             let condition =
               urlObj.protocol === 'http:' || urlObj.protocol === 'https:'
@@ -46,6 +50,7 @@ class Plugin {
             if (condition && matchArr) {
               const ext = matchArr[1]
               downloadArr.push({
+                originLink,
                 link,
                 urlObj,
                 ext
@@ -71,7 +76,7 @@ class Plugin {
             })
           ).then(() => {
             const newCSS = replaceCSSUrl(oldCSS, link => {
-              const obj = downloadArr.find(v => v.link === link)
+              const obj = downloadArr.find(v => v.originLink === link)
               if (obj) {
                 const { urlObj, filepath } = obj
                 const newLink =
